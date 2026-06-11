@@ -22,4 +22,4 @@ export LGTV_TV="$TV"
 export LGTV_NAME="$NAME"
 export LGTV_URL="$MQTT_URL"
 
-exec lgtv2mqtt
+exec node /app/index.js

@@ -1,6 +1,6 @@
 name: "LG TV MQTT"
 description: "Interface between LG WebOS Smart TVs and MQTT with Home Assistant auto-discovery"
-version: "1.1.1"
+version: "1.1.2"
 slug: "lgtv2mqtt"
 init: false
 arch:
