@@ -223,22 +223,17 @@ function publishDiscovery() {
         payload_available: '2',
         payload_not_available: '0',
         state_topic: name + '/connected',
-        state_on: '2',
-        state_off: '1',
-        command_off_action: {
-            topic: name + '/set/system/turnOff',
-            payload: '1'
-        },
+        payload_on: '2',
+        payload_off: '1',
+        command_topic: name + '/set/system/turnOff',
         volume_state_topic: name + '/status/volume',
         volume_command_topic: name + '/set/volume',
         volume_min: 0,
         volume_max: 100,
         mute_state_topic: name + '/status/mute',
-        mute_state_on: '1',
-        mute_state_off: '0',
         mute_command_topic: name + '/set/mute',
-        payload_mute: 'true',
-        payload_unmute: 'false',
+        payload_mute: '1',
+        payload_unmute: '0',
         source_state_topic: name + '/status/foregroundApp'
     };
 
