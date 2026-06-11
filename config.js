@@ -13,9 +13,9 @@ const config = require('yargs')
         v: 'verbosity'
     })
     .default({
-        u: 'mqtt://127.0.0.1',
-        n: 'lgtv',
-        t: 'lgwebostv',
+        u: process.env.LGTV_URL || 'mqtt://127.0.0.1',
+        n: process.env.LGTV_NAME || 'lgtv',
+        t: process.env.LGTV_TV || 'lgwebostv',
         v: 'info'
     })
     .version()

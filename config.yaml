@@ -1,0 +1,25 @@
+name: "LG TV MQTT"
+description: "Interface between LG WebOS Smart TVs and MQTT with Home Assistant auto-discovery"
+version: "1.1.1"
+slug: "lgtv2mqtt"
+init: false
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+options:
+  tv: "192.168.1.180"
+  name: "livingroom"
+  mqtt_host: "core-mosquitto"
+  mqtt_port: 1883
+  mqtt_user: ""
+  mqtt_password: ""
+schema:
+  tv: str
+  name: str
+  mqtt_host: str
+  mqtt_port: int
+  mqtt_user: str
+  mqtt_password: str
