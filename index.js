@@ -228,8 +228,6 @@ function publishDiscovery() {
         command_topic: name + '/set/system/turnOff',
         volume_state_topic: name + '/status/volume',
         volume_command_topic: name + '/set/volume',
-        volume_min: 0,
-        volume_max: 100,
         mute_state_topic: name + '/status/mute',
         mute_command_topic: name + '/set/mute',
         payload_mute: '1',
