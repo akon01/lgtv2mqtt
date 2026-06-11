@@ -208,20 +208,21 @@ function sendPointerEvent(type, payload) {
 function publishDiscovery() {
     const name = config.name;
     const deviceId = 'lgtv_' + name;
-    const device = {
-        identifiers: [deviceId],
-        name: name.charAt(0).toUpperCase() + name.slice(1) + ' LG TV',
-        model: 'LG WebOS TV',
-        manufacturer: 'LG'
-    };
 
     const mediaPlayer = {
         name: name.charAt(0).toUpperCase() + name.slice(1) + ' TV',
         unique_id: deviceId,
-        device,
-        availability_topic: name + '/connected',
-        payload_available: '2',
-        payload_not_available: '0',
+        device: {
+            identifiers: [deviceId],
+            name: name.charAt(0).toUpperCase() + name.slice(1) + ' LG TV',
+            model: 'LG WebOS TV',
+            manufacturer: 'LG'
+        },
+        availability: [{
+            topic: name + '/connected',
+            payload_available: '2',
+            payload_not_available: '0'
+        }],
         state_topic: name + '/connected',
         payload_on: '2',
         payload_off: '1',
@@ -232,11 +233,12 @@ function publishDiscovery() {
         mute_command_topic: name + '/set/mute',
         payload_mute: '1',
         payload_unmute: '0',
-        source_state_topic: name + '/status/foregroundApp'
+        source_state_topic: name + '/status/foregroundApp',
+        platform: 'mqtt'
     };
 
     mqtt.publish(
-        'homeassistant/media_player/' + name + '/config',
+        'homeassistant/media_player/' + deviceId + '/config',
         JSON.stringify(mediaPlayer),
         {retain: true}
     );
