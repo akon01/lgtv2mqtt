@@ -1,8 +1,8 @@
 FROM node:18-alpine
 
-RUN apk add --no-cache jq git
+RUN apk add --no-cache jq
 
-RUN npm install -g https://github.com/akon01/lgtv2mqtt
+RUN npm install -g https://github.com/akon01/lgtv2mqtt/archive/refs/heads/master.tar.gz
 
 COPY run.sh /run.sh
 RUN chmod +x /run.sh
