@@ -22,5 +22,6 @@ fi
 export LGTV_TV="$TV"
 export LGTV_NAME="$NAME"
 export LGTV_URL="$MQTT_URL"
+export LGTV_KEYFILE="/data/lgtv2-keyfile"
 
 exec node /app/index.js

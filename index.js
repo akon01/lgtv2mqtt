@@ -18,7 +18,8 @@ log.info('mqtt trying to connect', config.url);
 const mqtt = Mqtt.connect(config.url, {will: {topic: config.name + '/connected', payload: '0', retain: true}});
 
 const lgtv = new Lgtv({
-    url: 'ws://' + config.tv + ':3000'
+    url: 'ws://' + config.tv + ':3000',
+    keyFile: process.env.LGTV_KEYFILE
 });
 
 mqtt.on('connect', () => {
