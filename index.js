@@ -30,7 +30,7 @@ mqtt.on('connect', () => {
     log.info('mqtt subscribe', config.name + '/set/#');
     mqtt.subscribe(config.name + '/set/#');
 
-    publishDiscovery();
+
 });
 
 mqtt.on('close', () => {
@@ -205,42 +205,3 @@ function sendPointerEvent(type, payload) {
     );
 }
 
-function publishDiscovery() {
-    const name = config.name;
-    const deviceId = 'lgtv_' + name;
-
-    const mediaPlayer = {
-        name: name.charAt(0).toUpperCase() + name.slice(1) + ' TV',
-        unique_id: deviceId,
-        device: {
-            identifiers: [deviceId],
-            name: name.charAt(0).toUpperCase() + name.slice(1) + ' LG TV',
-            model: 'LG WebOS TV',
-            manufacturer: 'LG'
-        },
-        availability: [{
-            topic: name + '/connected',
-            payload_available: '2',
-            payload_not_available: '0'
-        }],
-        state_topic: name + '/connected',
-        payload_on: '2',
-        payload_off: '1',
-        command_topic: name + '/set/system/turnOff',
-        volume_state_topic: name + '/status/volume',
-        volume_command_topic: name + '/set/volume',
-        mute_state_topic: name + '/status/mute',
-        mute_command_topic: name + '/set/mute',
-        payload_mute: '1',
-        payload_unmute: '0',
-        source_state_topic: name + '/status/foregroundApp',
-        platform: 'mqtt'
-    };
-
-    mqtt.publish(
-        'homeassistant/media_player/' + deviceId + '/config',
-        JSON.stringify(mediaPlayer),
-        {retain: true}
-    );
-    log.info('mqtt discovery published for', name);
-}
